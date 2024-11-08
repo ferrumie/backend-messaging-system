@@ -6,7 +6,7 @@ from accounts.token_auth import JWTAuthentication
 from rest_framework import status
 from django.contrib.auth.models import User
 
-from messages.models import Chat, Contact
+from message_app.models import Chat, Contact
 
 class UserRegistration(CreateAPIView):
     serializer_class = RegisterUserSerializer

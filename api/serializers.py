@@ -2,7 +2,7 @@ from rest_framework import serializers # type: ignore
 from django.contrib.auth import get_user_model, authenticate
 from django.contrib.auth import password_validation
 from django.core.exceptions import ValidationError
-from messages.models import Chat, Messages, Contact
+from message_app.models import Chat, Messages, Contact
 
 User = get_user_model()
 

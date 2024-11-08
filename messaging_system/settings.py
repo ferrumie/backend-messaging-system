@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     # add other apps
     'rest_framework',
     'accounts',
-    'messages',
+    'message_app',
     'api',
     'channels'
 ]
@@ -118,7 +118,7 @@ REST_FRAMEWORK = {
     # or allow read-only access for unauthenticated users.
     # Use custom JWT Authentication
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'accounts.tokenauthentication.JWTAuthentication'
+        'accounts.token_auth.JWTAuthentication'
     ]
 }
 

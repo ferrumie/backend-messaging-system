@@ -13,7 +13,7 @@ from django.core.asgi import get_asgi_application
 from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter, URLRouter
 from api.routing import websocket_urlpatterns
-from messages.middleware import JWTWebsocketMiddleware
+from message_app.middleware import JWTWebsocketMiddleware
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'messaging_system.settings')
 

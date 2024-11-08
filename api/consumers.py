@@ -2,7 +2,7 @@ import json
 from asgiref.sync import async_to_sync
 from channels.generic.websocket import WebsocketConsumer
 from api.serializers import ChatSerializer, MessagesSerializer
-from messages.models import Messages, Contact, Chat
+from message_app.models import Messages, Contact, Chat
 from api.views import get_last_100_messages
 import datetime
 
