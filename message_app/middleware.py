@@ -1,7 +1,9 @@
 from channels.middleware import BaseMiddleware
-from rest_framework.exceptions import AuthenticationFailed
 from django.db import close_old_connections
+from rest_framework.exceptions import AuthenticationFailed
+
 from accounts.token_auth import JWTAuthentication
+
 
 class JWTWebsocketMiddleware(BaseMiddleware):
     async def __call__(self, scope, receive, send):
@@ -12,10 +14,7 @@ class JWTWebsocketMiddleware(BaseMiddleware):
         token = query_parameters.get("token", None)
 
         if token is None:
-            await send({
-                "type": "websocket.close",
-                "code": 4000
-            })
+            await send({"type": "websocket.close", "code": 4000})
 
         authentication = JWTAuthentication()
         try:
@@ -23,14 +22,8 @@ class JWTWebsocketMiddleware(BaseMiddleware):
             if user is not None:
                 scope['user'] = user
             else:
-                await send({
-                "type": "websocket.close",
-                "code": 4000
-            })
+                await send({"type": "websocket.close", "code": 4000})
             return await super().__call__(scope, receive, send)
-        
+
         except AuthenticationFailed:
-            await send({
-                "type": "websocket.close",
-                "code": 4002
-            })
+            await send({"type": "websocket.close", "code": 4002})

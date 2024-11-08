@@ -37,17 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     # add daphne app
-
     'daphne',
-
     'django.contrib.staticfiles',
-
     # add other apps
     'rest_framework',
     'accounts',
     'message_app',
     'api',
-    'channels'
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -117,9 +114,7 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     # Use custom JWT Authentication
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'accounts.token_auth.JWTAuthentication'
-    ]
+    'DEFAULT_AUTHENTICATION_CLASSES': ['accounts.token_auth.JWTAuthentication']
 }
 
 

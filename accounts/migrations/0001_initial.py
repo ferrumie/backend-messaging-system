@@ -27,9 +27,7 @@ class Migration(migrations.Migration):
                 ("password", models.CharField(max_length=128, verbose_name="password")),
                 (
                     "last_login",
-                    models.DateTimeField(
-                        blank=True, null=True, verbose_name="last login"
-                    ),
+                    models.DateTimeField(blank=True, null=True, verbose_name="last login"),
                 ),
                 ("email", models.EmailField(max_length=254, unique=True)),
                 ("username", models.CharField(blank=True, max_length=255)),
@@ -38,15 +36,11 @@ class Migration(migrations.Migration):
                 ("updated_datetime", models.DateTimeField(auto_now=True)),
                 (
                     "groups",
-                    models.ManyToManyField(
-                        related_name="custom_user_set", to="auth.group"
-                    ),
+                    models.ManyToManyField(related_name="custom_user_set", to="auth.group"),
                 ),
                 (
                     "user_permissions",
-                    models.ManyToManyField(
-                        related_name="custom_user_set", to="auth.permission"
-                    ),
+                    models.ManyToManyField(related_name="custom_user_set", to="auth.permission"),
                 ),
             ],
             options={

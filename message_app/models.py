@@ -1,17 +1,20 @@
-from django.db import models
 from django.contrib.auth import get_user_model
-from django.dispatch import receiver
+from django.db import models
 from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 User = get_user_model()
 
+
 class Contact(models.Model):
     """Contact model."""
+
     user = models.ForeignKey(User, related_name="contacts", on_delete=models.CASCADE)
     friends = models.ManyToManyField('self', blank=True)
 
     def __str__(self):
         return self.user.username
+
 
 class Messages(models.Model):
     contact = models.ForeignKey(Contact, related_name='contact_messages', on_delete=models.CASCADE)
@@ -20,12 +23,12 @@ class Messages(models.Model):
 
     def __str__(self):
         return self.contact.user.username
-    
+
     class Meta:
         ordering = ('-timestamp',)
 
     # def last_10_messages(self):
-        
+
     #     return Messages.objects.order_by('-timestamp')[:10]
 
 
@@ -43,6 +46,7 @@ class Chat(models.Model):
             return self.messages.last().content
         except AttributeError:
             return 'Error'
+
 
 @receiver(post_save, sender=User)
 def create_contact(sender, instance, created, **kwargs):
