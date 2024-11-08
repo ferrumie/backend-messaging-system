@@ -30,8 +30,8 @@ class Messages(models.Model):
 
 
 class Chat(models.Model):
-    sender = models.ForeignKey(Contact, on_delete=models.PROTECT, related_name="chats")
-    receiver = models.ForeignKey(Contact, related_name="chats_2", on_delete=models.PROTECT)
+    sender = models.ForeignKey(Contact, on_delete=models.PROTECT, related_name="sender")
+    receiver = models.ForeignKey(Contact, related_name="receiver", on_delete=models.PROTECT)
     messages = models.ManyToManyField(Messages, blank=True)
     updated = models.DateTimeField(auto_now=True)
 
