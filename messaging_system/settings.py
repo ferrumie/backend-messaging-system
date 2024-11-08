@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # add other apps
+    'rest_framework',
     'accounts',
     'messages',
     'api',
@@ -108,6 +109,18 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTH_USER_MODEL = "accounts.User"
+
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    # Use custom JWT Authentication
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'accounts.tokenauthentication.JWTAuthentication'
+    ]
+}
 
 
 # Internationalization
