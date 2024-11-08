@@ -8,7 +8,7 @@ class RegisterUserSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = get_user_model()
-        fields = ['email', 'password', 'user_name']
+        fields = ['email', 'password', 'username']
         extra_kwargs = {'password':{'write_only':True}}
 
     def validate(self, attrs):
@@ -60,5 +60,6 @@ class LoginSerializer(serializers.Serializer):
         
         return{
             "email": user.email,
-            "id": user.id
+            "id": user.id,
+            "username": user.username,
         }
