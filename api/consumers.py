@@ -25,6 +25,9 @@ class ChatConsumer(WebsocketConsumer):
     def new_message(self, data):
         user = self.scope['user']
         contact, created = Contact.objects.get_or_create(user=user)
+        if len(data['message']) > 500:
+            self.send_message({'command':'messages', 'status':'Message too long'})
+
         message = Messages.objects.create(contact=contact, content=data['message'])
         chat, created = Chat.objects.get_or_create(id=data["chat_id"])
         chat.messages.add(message)

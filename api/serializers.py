@@ -32,9 +32,8 @@ class RegisterUserSerializer(serializers.ModelSerializer):
         user = User.objects.create_user(
             email = validate_data['email'],
             password = validate_data['password'],
-            first_name = validate_data.get('first_name', ""),
-            last_name =validate_data.get('last_name', "")
-        )
+            username = validate_data.get('username', "")
+            )
         return user
 
 
@@ -116,7 +115,7 @@ class ContactSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ChatCreateSerializer(serializers.ModelSerializer):
-    user_id = serializers.CharField(max_length=20, write_only=True)
+    user_id = serializers.IntegerField(write_only=True)
 
     class Meta:
         model = Chat

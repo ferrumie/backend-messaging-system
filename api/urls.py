@@ -3,7 +3,7 @@ from api.views import UserChats, ChatMessages, ChatUsers, UserRegistration, User
 
 urlpatterns = [
     path('register/', UserRegistration.as_view(), name='user_registration'),
-    path('login/', UserRegistration.as_view(), name='user_login'),
+    path('login/', UserLogin.as_view(), name='user_login'),
     path('chats/', UserChats.as_view(), name='user_chats'),
     path('add/', UserChats.as_view(), name='user_chats_add'),
     path('messages/', ChatMessages.as_view(), name='messages'),
